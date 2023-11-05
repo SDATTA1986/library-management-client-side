@@ -3,6 +3,8 @@
 // import { useLoaderData } from "react-router-dom";
 import Navbar from './../Shared/Navbar';
 
+import Slider from './../Slider/Slider';
+
 
 
 
@@ -14,10 +16,10 @@ const Home = () => {
     return (
         
             <div>
-                <Navbar ></Navbar>
+                <Navbar></Navbar>
                 
-                {/* <Banner ></Banner>
-                <div>
+                 <Slider></Slider>
+                {/*<div>
                     <h2 className="text-5xl text-center mx-auto font-bold  py-4 mt-40 w-[600px]" >OUR CATEGORIES</h2>
                     <hr className="border border-solid border-black w-[100px] mx-auto" />
 
