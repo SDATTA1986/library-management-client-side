@@ -4,6 +4,7 @@
 import Navbar from './../Shared/Navbar';
 
 import Slider from './../Slider/Slider';
+import Footer from './../Footer/Footer';
 
 
 
@@ -29,8 +30,8 @@ const Home = () => {
                         categories && categories?.map(brand => <Category key={brand.id} brand={brand} ></Category>)
                     }
                 </div>
-                
-                <Footer></Footer> */}
+                */}
+                <Footer></Footer> 
 
             </div>
        
