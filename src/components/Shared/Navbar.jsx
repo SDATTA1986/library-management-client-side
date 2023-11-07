@@ -12,9 +12,9 @@ const Navbar = () => {
 
     const navLinks = <>
         <li ><NavLink to="/">Home</NavLink></li>
-        <li ><NavLink to="/addProduct">Add Book</NavLink></li>
-        <li ><NavLink to="/myCart">All Books</NavLink></li>
-        <li ><NavLink to="/myCart">Borrowed Books</NavLink></li>
+        <li ><NavLink to="/addBook">Add Book</NavLink></li>
+        <li ><NavLink to="/allBook">All Books</NavLink></li>
+        <li ><NavLink to="/borrowedBook">Borrowed Books</NavLink></li>
 
 
     </>
