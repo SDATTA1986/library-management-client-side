@@ -3,6 +3,7 @@ import StarRatings from 'react-star-ratings';
 
 const DisplayProduct = ({ user }) => {
     const { Image, Name, authorName, Category,Rating,_id } = user || {};
+    const Rating2=parseFloat(Rating);
     return (
         <div>
             <div className="hero  bg-base-200">
@@ -13,9 +14,9 @@ const DisplayProduct = ({ user }) => {
                         <p className="py-2  text-green-700 text-5xl font-bold">{authorName}</p>
                         <p className="py-2">Category: {Category}</p>
                         
-                        <p className="py-2">Rating: <span className="text-2xl font-bold">{Rating}</span>/10</p>
+                        <p className="py-2">Rating: <span className="text-2xl font-bold">{Rating2}</span>/10</p>
                         <StarRatings
-                            rating={Rating}
+                            rating={Rating2}
                             starDimension="20px"
                             starSpacing="2px"
                             numberOfStars={10}
