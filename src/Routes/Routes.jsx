@@ -12,6 +12,7 @@ import AddBook from './../components/Pages/AddBook';
 import AllBook from './../components/Pages/AllBook';
 import BorrowedBook from './../components/Pages/BorrowedBook';
 import Login from './../components/Shared/Login';
+import Register from './../components/Shared/Register';
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
                 element: <Login></Login>
 
             },
+            {
+                path: '/register',
+                element: <Register></Register>
+
+            }
 
         ]
     }
