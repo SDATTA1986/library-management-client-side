@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import StarRatings from 'react-star-ratings';
 
 const DisplayProduct = ({ user }) => {
     const { Image, Name, authorName, Category,Rating,_id } = user || {};
@@ -14,6 +14,13 @@ const DisplayProduct = ({ user }) => {
                         <p className="py-2">Category: {Category}</p>
                         
                         <p className="py-2">Rating: <span className="text-2xl font-bold">{Rating}</span>/10</p>
+                        <StarRatings
+                            rating={Rating}
+                            starDimension="20px"
+                            starSpacing="2px"
+                            numberOfStars={10}
+                            starRatedColor="orange"
+                        />
                         <div className="flex gap-2">
                         <Link to={`/product/${_id}`}><button className="btn bg-green-600 hover:bg-green-700">View Details</button></Link>
                         
