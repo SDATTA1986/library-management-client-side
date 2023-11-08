@@ -23,7 +23,7 @@ const DisplayProduct = ({ user }) => {
                             starRatedColor="orange"
                         />
                         <div className="flex gap-2">
-                        <Link to={`/Book/${_id}`}><button className="btn bg-green-600 hover:bg-green-700">View Details</button></Link>
+                        <Link to={`/Books/${_id}`}><button className="btn bg-green-600 hover:bg-green-700">View Details</button></Link>
                         
                         </div>
                         
