@@ -1,9 +1,81 @@
 
 
+import { useLoaderData } from "react-router-dom";
+
+
+import { useState } from "react";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
+import Navbar from './../Shared/Navbar';
+
+
 const BorrowedBook = () => {
+    const items = useLoaderData();
+    const [cartItem, setCartItem] = useState(items);
+    // const handleDelete=(_id)=>{
+    //     console.log(_id);
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             fetch(`https://brand-shop-server-side-q0n7ehyj9-sourav-dattas-projects.vercel.app/cart/${_id}`,{
+    //                 method:"DELETE",
+    //             })
+    //             .then(res=>res.json())
+    //             .then(data=>{console.log(data);
+    //                 const remaining=cartItem.filter(singleItem=>singleItem._id!==_id);
+    //                 setCartItem(remaining);
+    //                 if(data.deletedCount>0){
+    //                     Swal.fire("Deleted !", "You have successfully Deleted This Product!", "success");
+    //                 }
+    //         })
+    //       }})
+        
+        
+    // }
+    
     return (
         <div>
-            
+            <Navbar></Navbar>
+            {cartItem?.length > 0 ?
+                <div className="mt-[70px] grid grid-cols-2 gap-20 mb-[20px]">
+                   
+
+                    {cartItem?.map(item => (
+                        <div key={item._id}>
+                            <div className="hero  bg-base-200">
+                                <div className="hero-content flex-col lg:flex-row">
+                                    <img src={item.Image} className=" rounded-lg shadow-2xl" />
+                                    <div>
+                                        <h1 className="text-2xl font-bold">Book Name: {item.Name}</h1>
+                                        <h1 className="text-2xl font-bold">Book Category: {item.Category}</h1>
+                                        <p className="py-2  text-green-700  font-bold">Borrowed Date: {item.borrowedDate}</p>
+                                        <p className="py-2  text-green-700  font-bold">Return Date: {item.returnDate}</p>
+                                        
+
+
+                                        <button  className="btn bg-green-600 hover:bg-green-700">Return</button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                    )}
+
+                </div>
+                :
+                <div className="mt-[70px] text-center text-5xl mb-[20px]">
+                    Cart is Empty
+                </div>
+            }
         </div>
     );
 };

@@ -50,6 +50,7 @@ const router = createBrowserRouter([
             {
                 path: '/borrowedBook',
                 element: <PrivateRoute><BorrowedBook></BorrowedBook></PrivateRoute>,
+                loader: ()=>fetch('http://localhost:5000/BookCart')
                 
             },
             {
