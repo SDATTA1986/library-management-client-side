@@ -13,6 +13,7 @@ import AllBook from './../components/Pages/AllBook';
 import BorrowedBook from './../components/Pages/BorrowedBook';
 import Login from './../components/Shared/Login';
 import Register from './../components/Shared/Register';
+import BookDetail from './../components/BookDetail/BookDetail';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
                 element: <CategoryDetails></CategoryDetails>,
                 loader: () => fetch('http://localhost:5000/Book')
             },
+            {
+                path: '/Book/:_id',
+                element: <PrivateRoute><BookDetail></BookDetail></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/Book')
+            },            
+
             {
                 path: '/addBook',
                 element: <PrivateRoute><AddBook></AddBook></PrivateRoute>,
