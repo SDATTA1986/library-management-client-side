@@ -3,15 +3,23 @@
 import { useLoaderData } from "react-router-dom";
 
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 import Navbar from './../Shared/Navbar';
+import { AuthContext } from './../Providers/AuthProvider';
 
 
 const BorrowedBook = () => {
+    const { user } = useContext(AuthContext);
     const items = useLoaderData();
-    const [cartItem, setCartItem] = useState(items);
+    console.log(items);
+    const filteredBooks = items.filter(item => item.email === user.email);
+     const [cartItem, setCartItem] = useState(filteredBooks);
+    
+    console.log(filteredBooks);
+    // setCartItem(filteredBooks);
+    // const cartItem=filteredBooks;
     const handleReturn=(_id,Name)=>{
         console.log(_id,Name);
         Swal.fire({

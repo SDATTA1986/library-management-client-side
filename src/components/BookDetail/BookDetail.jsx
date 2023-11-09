@@ -110,7 +110,7 @@ console.log(getCurrentDate());
                                     {/* <h3 className="font-bold text-lg">Hello!</h3>
                                     <p className="py-4">Press ESC key or click the button below to close</p> */}
                                     <div className="px-6 py-6 lg:px-8">
-                                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+                                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Fill Up The Form</h3>
                                         <form onSubmit={handleCart} className="space-y-6" action="#">
                                             <div className="form-control">
                                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
