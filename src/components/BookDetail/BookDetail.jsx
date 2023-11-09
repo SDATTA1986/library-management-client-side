@@ -1,6 +1,6 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from './../Providers/AuthProvider';
 
 
@@ -14,8 +14,17 @@ const BookDetail = () => {
     const singleBook = books.find(book => book._id === (_id));
     console.log(singleBook);
     const { user } = useContext(AuthContext);
-    const { Image, Name, Category, authorName, Rating, Quantity } = singleBook || {};
+    const { Image, Name, Category, authorName, Rating } = singleBook || {};
+    let { Quantity}=singleBook||{};
     const Rating2 = parseFloat(Rating);
+    const button = document.getElementById("myButton");
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [quantity, setQuantity] = useState(Quantity);
+    useEffect(() => {
+        if (singleBook && !(quantity >0)) {
+          setIsButtonDisabled(true);
+        }
+      }, [singleBook,quantity]);
     // Get the current date in the format "YYYY-MM-DD"
     function getCurrentDate() {
         const now = new Date();
@@ -32,7 +41,32 @@ console.log(getCurrentDate());
         const email = e.target.email.value;
         const borrowedDate = e.target.borrowedDate.value;
         const returnDate = e.target.returnDate.value;
+        // setQuantity(quantity-1);
+        console.log(quantity);
+        if(quantity>0){
+            setQuantity(quantity-1);
+            
+        }
+        else{
+        setQuantity(0);
         
+        
+        }
+        console.log(Quantity);
+        const Data={
+            Quantity:quantity,
+        };
+        fetch(`http://localhost:5000/Book/${_id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(Data),
+          })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
         const myData={
             Image,Name,Category,email,borrowedDate,returnDate
         };
@@ -52,6 +86,7 @@ console.log(getCurrentDate());
                 swal("Congratulations!", "You have successfully Borrowed Book!", "success");
             }
         })
+        
     }
     return (
         <div>
@@ -63,11 +98,13 @@ console.log(getCurrentDate());
                         <h1 className="text-2xl font-bold">{Name}</h1>
                         <p className="py-2  text-green-700 text-5xl font-bold">{Category}</p>
                         <p className="py-2">Author Name: {authorName}</p>
-                        <p className="py-2">Quantity:  <span className="text-2xl font-bold">{Quantity}</span></p>
+                        <p className="py-2">Quantity:  <span className="text-2xl font-bold">{quantity}</span></p>
 
                         <p className="py-2">Rating: <span className="text-2xl font-bold">{Rating2}</span>/10</p>
                         <div className="flex gap-2">
-                            <button className="btn bg-green-600 hover:bg-green-700" onClick={() => document.getElementById('my_modal_1').showModal()}>Borrow</button>
+                            <button id="myButton" className="btn bg-green-600 hover:bg-green-700" onClick={() => document.getElementById('my_modal_1').showModal()}
+                            
+                            disabled={isButtonDisabled}>Borrow</button>
                             <dialog id="my_modal_1" className="modal">
                                 <div className="modal-box">
                                     {/* <h3 className="font-bold text-lg">Hello!</h3>

@@ -7,6 +7,8 @@ import Slider from './../Slider/Slider';
 import Footer from './../Footer/Footer';
 import { useEffect, useState } from 'react';
 import Category from '../Category/Category';
+import Services from './../Services/Services';
+import ContactUs from './../Contact/ContactUs';
 
 
 
@@ -37,7 +39,18 @@ const Home = () => {
                         categories && categories?.map(category => <Category key={category.id} category={category} ></Category>)
                     }
                 </div>
-               
+                <div>
+                    <h2 className="text-5xl text-center mx-auto font-bold  py-4 mt-40 w-[600px]">OUR SERVICES</h2>
+                    <hr className="border border-solid border-black w-[100px] mx-auto" />
+
+                </div>
+                <Services></Services>
+                <div>
+                    <h2 className="text-5xl text-center mx-auto font-bold  py-4 mt-40 w-[600px] ">CONTACT US</h2>
+                    <hr className="border border-solid border-black w-[100px] mx-auto" />
+
+                </div>
+                <ContactUs ></ContactUs>
                 <Footer></Footer> 
 
             </div>

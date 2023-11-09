@@ -12,33 +12,33 @@ import Navbar from './../Shared/Navbar';
 const BorrowedBook = () => {
     const items = useLoaderData();
     const [cartItem, setCartItem] = useState(items);
-    // const handleDelete=(_id)=>{
-    //     console.log(_id);
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this!",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //       }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             fetch(`https://brand-shop-server-side-q0n7ehyj9-sourav-dattas-projects.vercel.app/cart/${_id}`,{
-    //                 method:"DELETE",
-    //             })
-    //             .then(res=>res.json())
-    //             .then(data=>{console.log(data);
-    //                 const remaining=cartItem.filter(singleItem=>singleItem._id!==_id);
-    //                 setCartItem(remaining);
-    //                 if(data.deletedCount>0){
-    //                     Swal.fire("Deleted !", "You have successfully Deleted This Product!", "success");
-    //                 }
-    //         })
-    //       }})
+    const handleReturn=(_id,Name)=>{
+        console.log(_id,Name);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Return This Book!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/BookCart/${_id}`,{
+                    method:"DELETE",
+                })
+                .then(res=>res.json())
+                .then(data=>{console.log(data);
+                    const remaining=cartItem.filter(singleItem=>singleItem._id!==_id);
+                    setCartItem(remaining);
+                    if(data.deletedCount>0){
+                        Swal.fire("Returned !", "You have successfully Returned This Book!", "success");
+                    }
+            })
+          }})
         
         
-    // }
+    }
     
     return (
         <div>
@@ -60,7 +60,7 @@ const BorrowedBook = () => {
                                         
 
 
-                                        <button  className="btn bg-green-600 hover:bg-green-700">Return</button>
+                                        <button onClick={() => handleReturn(item._id,item.Name)} className="btn bg-green-600 hover:bg-green-700">Return</button>
 
 
                                     </div>
@@ -73,7 +73,7 @@ const BorrowedBook = () => {
                 </div>
                 :
                 <div className="mt-[70px] text-center text-5xl mb-[20px]">
-                    Cart is Empty
+                    No Books is Borrowed
                 </div>
             }
         </div>
