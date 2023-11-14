@@ -3,7 +3,7 @@ import Navbar from "../Shared/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from './../Providers/AuthProvider';
         
-   
+
 const BookDetail = () => {
     const { _id } = useParams();
     console.log(_id);
@@ -44,18 +44,20 @@ console.log(getCurrentDate());
         console.log(quantity);
         
         if (quantity > 0) {
-            Quantity=Quantity-1;
-            // setQuantity((prevQuantity) => prevQuantity - 1);
-            setQuantity(Quantity);
+            // Use the functional form of setQuantity to ensure updates are based on the previous state
+            setQuantity(prevQuantity => prevQuantity - 1);
+            // Update Quantity variable as well
+            Quantity = Quantity - 1;
         } else {
             setQuantity(0);
-            Quantity=0;
+            Quantity = 0;
         }
-        console.log(Quantity);
-        const Data={
-            // Quantity:quantity,
-            Quantity
+    
+        const Data = {
+            Quantity,
         };
+        // console.log(Quantity);
+        
         fetch(`http://localhost:5000/Book/${_id}`, {
             method: "PATCH",
             headers: {

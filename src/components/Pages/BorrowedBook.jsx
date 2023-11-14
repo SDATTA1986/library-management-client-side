@@ -17,6 +17,7 @@ const BorrowedBook = () => {
     const filteredBooks = items.filter(item => item.email === user.email);
     const [cartItem, setCartItem] = useState(filteredBooks);
     const [books, setBooks] = useState([]);
+    const [quantity, setQuantity] = useState(0);
 
     console.log(filteredBooks);
     useEffect(() => {
@@ -24,6 +25,7 @@ const BorrowedBook = () => {
             .then(res => res.json())
             .then(data => setBooks(data))
     }, []);
+    
     // setCartItem(filteredBooks);
     // const cartItem=filteredBooks;
     const handleReturn = (_id, Name) => {
@@ -40,7 +42,10 @@ const BorrowedBook = () => {
             if (result.isConfirmed) {
                 const singleBook = books.find(book => book.Name === (Name));
                 console.log(singleBook);
+                
                 let { Quantity } = singleBook || {};
+                setQuantity(Quantity);
+                setQuantity((prevQuantity) => prevQuantity +1 );
                 Quantity = Quantity + 1;
                 console.log(Quantity);
                 fetch(`http://localhost:5000/Booking/${Name}`, {
