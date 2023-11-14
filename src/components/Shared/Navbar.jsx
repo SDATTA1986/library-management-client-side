@@ -74,11 +74,7 @@ const Navbar = () => {
                                 <NavLink className="btn bg-green-600 hover:bg-green-700 text-xl font-light text-white" to='/login'>LOGIN </NavLink>
                         }
                     </div>
-                    <div>
-                        <input type="checkbox" className="toggle" />
-
-
-                    </div>
+                    
                 </div>
 
             </div>

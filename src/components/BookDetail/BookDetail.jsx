@@ -2,8 +2,6 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from './../Providers/AuthProvider';
-
-
         
    
 const BookDetail = () => {
@@ -20,6 +18,7 @@ const BookDetail = () => {
     const button = document.getElementById("myButton");
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [quantity, setQuantity] = useState(Quantity);
+    console.log(Quantity);
     useEffect(() => {
         if (singleBook && !(quantity >0)) {
           setIsButtonDisabled(true);
@@ -43,18 +42,19 @@ console.log(getCurrentDate());
         const returnDate = e.target.returnDate.value;
         // setQuantity(quantity-1);
         console.log(quantity);
-        if(quantity>0){
-            setQuantity(quantity-1);
-            
-        }
-        else{
-        setQuantity(0);
         
-        
+        if (quantity > 0) {
+            Quantity=Quantity-1;
+            // setQuantity((prevQuantity) => prevQuantity - 1);
+            setQuantity(Quantity);
+        } else {
+            setQuantity(0);
+            Quantity=0;
         }
         console.log(Quantity);
         const Data={
-            Quantity:quantity,
+            // Quantity:quantity,
+            Quantity
         };
         fetch(`http://localhost:5000/Book/${_id}`, {
             method: "PATCH",
@@ -99,7 +99,6 @@ console.log(getCurrentDate());
                         <p className="py-2  text-green-700 text-5xl font-bold">{Category}</p>
                         <p className="py-2">Author Name: {authorName}</p>
                         <p className="py-2">Quantity:  <span className="text-2xl font-bold">{quantity}</span></p>
-
                         <p className="py-2">Rating: <span className="text-2xl font-bold">{Rating2}</span>/10</p>
                         <div className="flex gap-2">
                             <button id="myButton" className="btn bg-green-600 hover:bg-green-700" onClick={() => document.getElementById('my_modal_1').showModal()}
@@ -110,19 +109,16 @@ console.log(getCurrentDate());
                                     {/* <h3 className="font-bold text-lg">Hello!</h3>
                                     <p className="py-4">Press ESC key or click the button below to close</p> */}
                                     <div className="px-6 py-6 lg:px-8">
+                                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
                                         <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Fill Up The Form</h3>
                                         <form onSubmit={handleCart} className="space-y-6" action="#">
                                             <div className="form-control">
                                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
                                                 <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" defaultValue={user?.displayName}  />
-
-
                                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" defaultValue={user.email}  />
-
                                                 <label htmlFor="dateInput" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Borrowed Date</label>
                                                 <input type="text" name="borrowedDate" id="dateInput" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" defaultValue={getCurrentDate()} />
-
                                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Return Date</label>
                                                 <input type="date" name="returnDate" id="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required />
                                             </div>
@@ -144,12 +140,10 @@ console.log(getCurrentDate());
                             </dialog>
                             <Link to={`/updateProduct/${_id}`}><button className="btn  bg-green-600 hover:bg-green-700">Read</button></Link>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     );
 };
-
 export default BookDetail;

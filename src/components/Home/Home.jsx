@@ -15,7 +15,9 @@ import ContactUs from './../Contact/ContactUs';
 
 const Home = () => {
     // const categories = useLoaderData();
+    const [theme, setTheme] = useState(true);
     const [categories,setCategories]=useState([]);
+    const [text,setText]=useState(true);
     useEffect(()=>{
         fetch('http://localhost:5000/Category')
         .then(res=>res.json())
@@ -24,10 +26,12 @@ const Home = () => {
     
 
     return (
-        
+        <html data-theme={theme ? "light" : "dark"}>
             <div>
-                <Navbar></Navbar>
-                
+                <Navbar className={text?"text-black":"text-white"}></Navbar>
+                <div className="flex justify-center ">
+                    <button onClick={() => setTheme(!theme)} className="btn bg-green-600 hover:bg-green-700">Change Theme</button>
+                </div>
                  <Slider></Slider>
                 <div>
                     <h2 className="text-5xl text-center mx-auto font-bold  py-4 mt-40 w-[600px]" >OUR CATEGORIES</h2>
@@ -50,11 +54,11 @@ const Home = () => {
                     <hr className="border border-solid border-black w-[100px] mx-auto" />
 
                 </div>
-                <ContactUs ></ContactUs>
+                <ContactUs className={text?"text-black":"text-white"}></ContactUs>
                 <Footer></Footer> 
 
             </div>
-       
+            </html>
     );
 };
 

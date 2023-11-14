@@ -1,9 +1,8 @@
-
-
 import { useLoaderData } from "react-router-dom";
 
 
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useContext} from "react";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
 import Navbar from './../Shared/Navbar';
@@ -13,10 +12,11 @@ import { AuthContext } from './../Providers/AuthProvider';
 const BorrowedBook = () => {
     const { user } = useContext(AuthContext);
     const items = useLoaderData();
-    console.log(items);
+    // const [cartItem, setCartItem] = useState(items);
+    // console.log(items);
     const filteredBooks = items.filter(item => item.email === user.email);
      const [cartItem, setCartItem] = useState(filteredBooks);
-    
+
     console.log(filteredBooks);
     // setCartItem(filteredBooks);
     // const cartItem=filteredBooks;
@@ -54,7 +54,6 @@ const BorrowedBook = () => {
             {cartItem?.length > 0 ?
                 <div className="mt-[70px] grid grid-cols-2 gap-20 mb-[20px]">
                    
-
                     {cartItem?.map(item => (
                         <div key={item._id}>
                             <div className="hero  bg-base-200">
@@ -66,18 +65,13 @@ const BorrowedBook = () => {
                                         <p className="py-2  text-green-700  font-bold">Borrowed Date: {item.borrowedDate}</p>
                                         <p className="py-2  text-green-700  font-bold">Return Date: {item.returnDate}</p>
                                         
-
-
                                         <button onClick={() => handleReturn(item._id,item.Name)} className="btn bg-green-600 hover:bg-green-700">Return</button>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     )
                     )}
-
                 </div>
                 :
                 <div className="mt-[70px] text-center text-5xl mb-[20px]">
@@ -87,5 +81,4 @@ const BorrowedBook = () => {
         </div>
     );
 };
-
 export default BorrowedBook;
