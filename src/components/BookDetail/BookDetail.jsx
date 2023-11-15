@@ -17,7 +17,8 @@ const BookDetail = () => {
     const Rating2 = parseFloat(Rating);
     const button = document.getElementById("myButton");
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-    const [quantity, setQuantity] = useState(Quantity);
+    // const [quantity, setQuantity] = useState(Quantity);
+    const [quantity, setQuantity] = useState(singleBook?.Quantity || 0);
     console.log(Quantity);
     useEffect(() => {
         if (singleBook && !(quantity >0)) {
@@ -90,6 +91,11 @@ console.log(getCurrentDate());
         })
         
     }
+
+
+   
+    
+
     return (
         <div>
             <Navbar></Navbar>
