@@ -1,7 +1,7 @@
 # Library-Management-System
 
-## [ Live Link for Client Side](https://library-management-client.web.app)
-Click here for the Live Link for Client Side: [https://library-management-client.web.app](https://library-management-client.web.app)
+## [ Live Link for Client Side](https://65562fd7333ea90c839d2520--amazing-cassata-64b706.netlify.app)
+Click here for the Live Link for Client Side: [https://65562fd7333ea90c839d2520--amazing-cassata-64b706.netlify.app](https://65562fd7333ea90c839d2520--amazing-cassata-64b706.netlify.app)
 
 # Questions
 ## _Q1. Add at least 5 Project features & functionalities_
