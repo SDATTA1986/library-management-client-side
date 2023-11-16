@@ -14,7 +14,7 @@ Ans: This project has got the following features-
 
 - There is one button `View Details`  in each Category. By clicking VIEW DETAILS, user can see all the books of the particular Category. In each book, another button named VIEW DETAILS is attached. But, user has to login before watching this `VIEW DETAILS` section. Once, the user is logged in,he/she will get `Borrow` button. Once clicked this button, the product will be added to `Borrowed Books` section.
 
-- The `Borrowed Books` section is a private route and user can only access if he/she is logged in.If the quantity of this book is greater than 0, user can borrow this book.Otherwise, borrow button will remain disabled.
+- The `Borrowed Books` section is a private route and user can only access if he/she is logged in.If the quantity of this book is greater than 0, user can borrow this book.Otherwise, borrow button will remain disabled. If the user borrows a book, the quanitity of that book will be reduced by 1 and that book will apprear in the `Borrowed Books` section for that particular user. If the user returns the book, the quantity of the book will be increased by 1.
 
 - User can also add new product in the `ADD Book` section in the Navbar which is a protected route. This is also a private route.In the All Books sections, all the books are displayed with the quantity. There is a filter button in the Add Book Page by clicking which, only the books having quantity more than 0, will be shown. 
 
