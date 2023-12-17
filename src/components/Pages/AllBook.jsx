@@ -18,7 +18,7 @@ const AllBook = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className='max-w-6xl'></div>
+            
 
             <div className='flex flex-col justify-center items-center'>
             <button onClick={handleFilter} className="btn bg-green-600 hover:bg-green-700 btn-wide ">Filter Available Books</button>

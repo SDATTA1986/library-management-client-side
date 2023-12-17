@@ -9,7 +9,7 @@ const AddBook = () => {
     const onSubmit = (data) => {
         console.log(data);
     
-        fetch("http://localhost:5000/Book", {
+        fetch("https://library-management-system-server-fawn.vercel.app/Book", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

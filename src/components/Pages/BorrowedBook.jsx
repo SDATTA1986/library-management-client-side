@@ -21,7 +21,7 @@ const BorrowedBook = () => {
 
     console.log(filteredBooks);
     useEffect(() => {
-        fetch('http://localhost:5000/Book')
+        fetch('https://library-management-system-server-fawn.vercel.app/Book')
             .then(res => res.json())
             .then(data => setBooks(data))
     }, []);
@@ -48,7 +48,7 @@ const BorrowedBook = () => {
                 setQuantity((prevQuantity) => prevQuantity +1 );
                 Quantity = Quantity + 1;
                 console.log(Quantity);
-                fetch(`http://localhost:5000/Booking/${Name}`, {
+                fetch(`https://library-management-system-server-fawn.vercel.app/Booking/${Name}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const BorrowedBook = () => {
                     .then(data => {
                         console.log(data);
                     })
-                fetch(`http://localhost:5000/BookCart/${_id}`, {
+                fetch(`https://library-management-system-server-fawn.vercel.app/BookCart/${_id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Category from '../Category/Category';
 import Services from './../Services/Services';
 import ContactUs from './../Contact/ContactUs';
+import FeedBack from '../FeedBack/FeedBack';
 
 
 
@@ -19,7 +20,7 @@ const Home = () => {
     const [categories,setCategories]=useState([]);
     const [text,setText]=useState(true);
     useEffect(()=>{
-        fetch('http://localhost:5000/Category')
+        fetch('https://library-management-system-server-fawn.vercel.app/Category')
         .then(res=>res.json())
         .then(data=>setCategories(data))
     },[]);
@@ -55,6 +56,12 @@ const Home = () => {
 
                 </div>
                 <ContactUs className={text?"text-black":"text-white"}></ContactUs>
+                <div>
+                    <h2 className="text-5xl text-center mx-auto font-bold  py-4 mt-40 w-[600px]">FEEDBACK US</h2>
+                    <hr className="border border-solid border-black w-[100px] mx-auto" />
+
+                </div>
+                <FeedBack></FeedBack>
                 <Footer></Footer> 
 
             </div>

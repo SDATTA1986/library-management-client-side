@@ -31,7 +31,7 @@ const UpdateBook = () => {
             Image,Name,authorName,Quantity,Description,Rating,Category
         };
         form.reset();
-        fetch(`http://localhost:5000/Book/${_id}`, {
+        fetch(`https://library-management-system-server-fawn.vercel.app/Book/${_id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

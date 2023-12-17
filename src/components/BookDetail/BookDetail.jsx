@@ -59,7 +59,7 @@ console.log(getCurrentDate());
         };
         // console.log(Quantity);
         
-        fetch(`http://localhost:5000/Book/${_id}`, {
+        fetch(`https://library-management-system-server-fawn.vercel.app/Book/${_id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -75,7 +75,7 @@ console.log(getCurrentDate());
         };
         console.log(myData);
         
-        fetch("http://localhost:5000/BookCart", {
+        fetch("https://library-management-system-server-fawn.vercel.app/BookCart", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

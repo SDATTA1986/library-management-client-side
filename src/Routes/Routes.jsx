@@ -30,12 +30,12 @@ const router = createBrowserRouter([
             {
                 path: '/category/:name',
                 element: <CategoryDetails></CategoryDetails>,
-                loader: () => fetch('http://localhost:5000/Book')
+                loader: () => fetch('https://library-management-system-server-fawn.vercel.app/Book')
             },
             {
                 path: '/Books/:_id',
                 element: <PrivateRoute><BookDetail></BookDetail></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/Book')
+                loader: () => fetch('https://library-management-system-server-fawn.vercel.app/Book')
             },            
 
             {
@@ -46,19 +46,19 @@ const router = createBrowserRouter([
             {
                 path: '/allBook',
                 element: <PrivateRoute><AllBook></AllBook></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/Book')
+                loader: () => fetch('https://library-management-system-server-fawn.vercel.app/Book')
                 
             },
             {
                 path: '/updateBook/:id',
                 element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/Book/${params.id}`)
+                loader:({params})=>fetch(`https://library-management-system-server-fawn.vercel.app/Book/${params.id}`)
                 
             },
             {
                 path: '/borrowedBook',
                 element: <PrivateRoute><BorrowedBook></BorrowedBook></PrivateRoute>,
-                loader: ()=>fetch('http://localhost:5000/BookCart')
+                loader: ()=>fetch('https://library-management-system-server-fawn.vercel.app/BookCart')
                 
             },
             {
